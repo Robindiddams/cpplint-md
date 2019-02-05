@@ -2,23 +2,21 @@ import sys
 import re
 
 def main():
-    mdout = """## Linter Errors
+    mdout = """## 🚫Linter Errors🚫
 
-| n | type | error | file |
-|---|-----:|------:|:-----|
+| file | error |
+|:-----|:------|
 """
     filename = sys.argv[1]
     file = open(filename, "r")
-    i = 0
     for line in file:
-        i = i + 1
         data = re.findall("^(.*\:\d+):\s+(.*)\s+\[(.*)\]\s+\[(.*)\]", line)
         if (data):
             data = data[0]
             filepath = data[0]
             error = data[1]
-            error_type = data[2]
-            mdout += "| {} | {} | {} | {} |\n".format(i, error_type, error, filepath)
+            # error_type = data[2]
+            mdout += "| {} | {} |\n".format(filepath, error)
     out = open("{}.md".format(filename), "w")
     out.write(mdout)
     out.close()
