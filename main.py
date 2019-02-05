@@ -2,7 +2,7 @@ import sys
 import re
 
 def main():
-    mdout = """## 🚫Linter Errors🚫
+    mdout = """## Linter Errors
 
 | file | error |
 |:-----|:------|
